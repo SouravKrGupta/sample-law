@@ -1,80 +1,116 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Scale, Shield, Gavel, Briefcase, HeartHandshake, Building2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Briefcase,
+  Building2,
+  Gavel,
+  HeartHandshake,
+  Scale,
+  Shield,
+} from "lucide-react";
+import PageHero from "@/components/PageHero";
 import ServiceHero from "../img/hero_2.jpg";
+import ServiceImage from "../img/blog-1.jpg";
 
 const Services = () => {
   const services = [
     {
       icon: Scale,
-      title: "Family Law",
-      description: "Support for divorce, child custody, adoption, and domestic matters.",
+      title: "Corporate Advisory",
+      description: "Commercial guidance for contracts, governance, structuring, and business decisions.",
     },
     {
       icon: Shield,
-      title: "Criminal Defense",
-      description: "Strategic defense for charges ranging from misdemeanors to serious felonies.",
+      title: "Dispute Resolution",
+      description: "Strategic representation in litigation, arbitration, investigations, and contested matters.",
     },
     {
       icon: Gavel,
-      title: "Business Law",
-      description: "Corporate guidance for contracts, compliance, and business formation.",
+      title: "Employment Law",
+      description: "Support for workplace risk, executive disputes, policy issues, and sensitive reviews.",
     },
     {
       icon: Briefcase,
-      title: "Employment Law",
-      description: "Protection for workers and employers in workplace disputes and agreements.",
+      title: "Restructuring",
+      description: "Advice for distressed matters, creditor issues, recovery planning, and business turnaround.",
     },
     {
       icon: HeartHandshake,
-      title: "Personal Injury",
-      description: "Representation for accidents, negligence claims, and recovery support.",
+      title: "Private Client Matters",
+      description: "Trusted counsel for succession, wealth planning, and reputation-sensitive issues.",
     },
     {
       icon: Building2,
-      title: "Estate Planning",
-      description: "Wills, trusts, and probate guidance tailored to your goals.",
+      title: "Real Estate & Projects",
+      description: "Support across acquisitions, leasing, development, project risk, and approvals.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      <section
-        className="section-shell relative py-32"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(27,7,56,1) 0%, rgba(16,4,34,1) 60%, rgba(212,174,54,1) 100%)",
-        }}
-      >
-        <img src={ServiceHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
-        <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Services</h1>
-          <p className="max-w-3xl mx-auto text-lg text-gray-200">Comprehensive legal support designed to protect your interests and move your case forward.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Our Services"
+        title="Comprehensive legal support designed for complex matters and confident decisions."
+        description="Our services are structured to give clients clear legal direction, practical advice, and responsive support across business and private matters."
+        image={ServiceHero}
+      />
 
-      <section className="section-shell py-20 bg-white">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="card-3d border-0">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-royal-blue flex items-center justify-center">
-                  <service.icon className="w-8 h-8 text-law-gold" />
+      <section className="section-shell bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="relative">
+              <img
+                src={ServiceImage}
+                alt="LawEdge services"
+                className="h-[520px] w-full rounded-[32px] object-cover shadow-[0_28px_70px_-38px_rgba(16,32,50,0.45)]"
+              />
+              <div className="absolute bottom-6 left-6 max-w-[300px] rounded-[22px] bg-white/92 p-5 backdrop-blur">
+                <p className="eyebrow text-law-gold">Service Focus</p>
+                <p className="mt-2 text-xl font-serif font-semibold text-royal-blue">
+                  Built to support strategic, time-sensitive, and high-trust legal work
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-5">
+              {services.map((service, index) => (
+                <div
+                  key={service.title}
+                  className="rounded-[28px] border border-[#eadfce] bg-[#fcfaf6] p-7 shadow-[0_24px_60px_-44px_rgba(16,32,50,0.35)]"
+                >
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex gap-4">
+                      <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-royal-blue text-law-gold">
+                        <service.icon className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-serif font-semibold text-royal-blue">
+                          {service.title}
+                        </h3>
+                        <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-semibold tracking-[0.28em] text-slate-400">
+                      0{index + 1}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-serif font-semibold text-royal-blue mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section-shell py-16 bg-gray-50">
+      <section className="section-shell bg-[#f7f1e7] py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-bold text-royal-blue mb-4">Need guidance for your case?</h2>
-          <Button asChild className="bg-law-gold text-royal-blue hover:bg-law-gold/90">
+          <p className="eyebrow text-law-gold">Need Guidance</p>
+          <h2 className="mt-3 text-4xl font-serif font-semibold text-royal-blue md:text-5xl">
+            Discuss your matter with a team that can move quickly.
+          </h2>
+          <Button asChild className="mt-8 bg-royal-blue text-white hover:bg-royal-blue/95">
             <Link to="/contact">Book a Consultation</Link>
           </Button>
         </div>

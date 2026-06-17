@@ -550,35 +550,41 @@ const Home = () => {
               </div>
 
               <div className="mt-8 grid gap-6 md:grid-cols-2">
-                {testimonials.slice(0, 2).map((testimonial) => (
-                  <div
-                    key={testimonial.name}
-                    className="flex gap-4 rounded-[24px] border border-[#e7ddcf] bg-[#fbf8f2] p-5 shadow-[0_20px_50px_-30px_rgba(16,32,50,0.45)]"
-                  >
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="h-16 w-16 rounded-md object-cover flex-shrink-0"
-                    />
+                {[0, 1].map((offset) => {
+                  const testimonial =
+                    testimonials[(activeTestimonial + offset) % testimonials.length];
 
-                    <div>
-                      <Quote className="h-4 w-4 text-law-gold" />
+                  return (
+                    <Card
+                      key={`${testimonial.name}-${offset}`}
+                      className="overflow-hidden rounded-[24px] border border-[#eadfce] bg-[#fbf8f2] shadow-[0_24px_60px_-44px_rgba(16,32,50,0.35)]"
+                    >
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="h-[220px] w-full object-cover"
+                      />
 
-                      <p className="mt-2 text-sm leading-6 text-slate-700">
-                        {testimonial.quote}
-                      </p>
+                      <CardContent className="p-6">
+                        <Quote className="h-5 w-5 text-law-gold" />
 
-                      <div className="mt-3">
-                        <h3 className="text-sm font-semibold text-royal-blue">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-xs text-slate-500">
-                          {testimonial.role}
+                        <p className="mt-4 text-sm leading-7 text-slate-700">
+                          {testimonial.quote}
                         </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+
+                        <div className="mt-4">
+                          <h3 className="text-base font-semibold text-royal-blue">
+                            {testimonial.name}
+                          </h3>
+
+                          <p className="text-sm text-slate-500">
+                            {testimonial.role}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </div>
           </div>
