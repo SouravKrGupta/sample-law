@@ -1,37 +1,42 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { ArrowRight, Clock, Mail, MapPin, PhoneCall } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LogoLight from "../img/logo-light.webp";
 
 const Footer = () => {
   return (
-    <footer className="text-white" style={{ backgroundColor: "#100422" }}>
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <img src={LogoLight} width={200} alt="Logo | LawEdge" />
-            <p className="text-gray-300 leading-relaxed">
-              Providing exceptional legal counsel with integrity, dedication,
-              and results-driven advocacy for over 25 years.
+    <footer className="bg-[#0c1624] text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.15fr_0.75fr_0.75fr_0.9fr]">
+          <div className="space-y-5">
+            <img src={LogoLight} width={190} alt="Logo | LawEdge" />
+            <p className="max-w-md text-sm leading-7 text-slate-300">
+              Strategic legal advisory for businesses, founders, and private clients navigating
+              disputes, transactions, restructuring, and sensitive decisions.
             </p>
+            <Button asChild className="bg-law-gold text-royal-blue hover:bg-law-gold/90">
+              <Link to="/contact">
+                Request Consultation <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-law-gold">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-law-gold">Navigate</h4>
             <ul className="space-y-2">
               {[
+                { name: "Home", path: "/" },
                 { name: "About Us", path: "/about" },
                 { name: "Services", path: "/services" },
                 { name: "Attorneys", path: "/attorneys" },
                 { name: "Testimonials", path: "/testimonials" },
                 { name: "Blog", path: "/blog" },
+                { name: "Contact", path: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-gray-300 hover:text-law-gold transition-colors duration-200"
+                    className="text-slate-300 transition-colors duration-200 hover:text-law-gold"
                   >
                     {link.name}
                   </Link>
@@ -40,24 +45,21 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Practice Areas */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-law-gold">
-              Practice Areas
-            </h4>
+            <h4 className="text-lg font-semibold text-law-gold">Expertise</h4>
             <ul className="space-y-2">
               {[
-                { name: "Family Law", path: "/services" },
-                { name: "Criminal Defense", path: "/services" },
-                { name: "Business Law", path: "/services" },
-                { name: "Personal Injury", path: "/services" },
-                { name: "Estate Planning", path: "/services" },
-                { name: "Immigration Law", path: "/services" },
+                { name: "Corporate Advisory", path: "/services" },
+                { name: "Dispute Resolution", path: "/services" },
+                { name: "Employment & Leadership Risk", path: "/services" },
+                { name: "Real Estate & Projects", path: "/services" },
+                { name: "Restructuring & Recovery", path: "/services" },
+                { name: "Private Client Counsel", path: "/services" },
               ].map((area) => (
                 <li key={area.name}>
                   <Link
                     to={area.path}
-                    className="text-gray-300 hover:text-law-gold transition-colors duration-200"
+                    className="text-slate-300 transition-colors duration-200 hover:text-law-gold"
                   >
                     {area.name}
                   </Link>
@@ -66,49 +68,45 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-law-gold">
-              Contact Info
-            </h4>
+            <h4 className="text-lg font-semibold text-law-gold">Contact</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-law-gold mt-1 flex-shrink-0" />
+                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-law-gold" />
                 <div>
-                  <p className="text-gray-300">
-                    123 Justice Boulevard
+                  <p className="text-slate-300">
+                    New Delhi, Mumbai, Bengaluru
                     <br />
-                    Suite 456
-                    <br />
-                    Metro City, MC 12345
+                    By appointment for consultations
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-law-gold" />
-                <p className="text-gray-300">(555) 123-4567</p>
+                <PhoneCall className="h-5 w-5 text-law-gold" />
+                <p className="text-slate-300">+91 98765 43210</p>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-law-gold" />
-                <p className="text-gray-300">info@lawedge.com</p>
+                <Mail className="h-5 w-5 text-law-gold" />
+                <p className="text-slate-300">counsel@lawedge.in</p>
               </div>
               <div className="flex items-start space-x-3">
-                <Clock className="w-5 h-5 text-law-gold mt-1" />
-                <div className="text-gray-300">
+                <Clock className="mt-1 h-5 w-5 text-law-gold" />
+                <div className="text-slate-300">
                   <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
-                  <p>Sat: 9:00 AM - 2:00 PM</p>
-                  <p>Emergency: 24/7</p>
+                  <p>Priority response for urgent matters</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-center items-center">
-            <p className="text-gray-300 text-sm">
-              © {new Date().getFullYear()} LawEdge. All rights
-              reserved.
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
+            <p className="text-sm text-slate-400">
+              Copyright {new Date().getFullYear()} LawEdge. All rights reserved.
+            </p>
+            <p className="text-sm text-slate-400">
+              Strategic counsel for decisive moments.
             </p>
           </div>
         </div>
